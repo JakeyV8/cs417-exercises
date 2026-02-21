@@ -1,0 +1,78 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMnitEZLSZJRmgHLn925ugD",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/JakeyV8/cs417-exercises/blob/main/Participation%3A%20Social%20Media%20Mention%20Tracker\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 5,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "otswGYjFYCgS",
+        "outputId": "30bcd02c-2e35-4cd6-b6d9-9ffbdbfb81a1"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Mentions\n",
+            "@code_master:3 mentions\n",
+            "@alice:2 mentions\n",
+            "@bob:1 mentions\n"
+          ]
+        }
+      ],
+      "source": [
+        "posts = [\n",
+        "    \"I love learning Python with @code_master!\",\n",
+        "    \"Is @alice coming to the hackathon?\",\n",
+        "    \"Shoutout to @code_master for the help today.\",\n",
+        "    \"Hey @bob, did you see the post by @alice?\",\n",
+        "    \"Python dictionaries are awesome. @code_master agrees!\"\n",
+        "]\n",
+        "\n",
+        "mentions = {}\n",
+        "\n",
+        "for item in posts:\n",
+        "  words = item.split()\n",
+        "  for z in words:\n",
+        "    clean = z.strip(\"?!.,\")\n",
+        "    if clean[0] == \"@\":\n",
+        "      if clean in mentions:\n",
+        "        mentions[clean] += 1\n",
+        "      else:\n",
+        "        mentions[clean] = 1\n",
+        "\n",
+        "print(\"Mentions\")\n",
+        "for user, value in mentions.items():\n",
+        "  print(f\"{user}:{value} mentions\")"
+      ]
+    }
+  ]
+}
